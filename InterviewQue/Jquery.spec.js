@@ -30,7 +30,7 @@ describe('', function () {
         })
 
     })
-    it.only('TC-03', function () {
+    it('TC-03', function () {
         cy.visit('https://www.amazon.in/')
         cy.get('#twotabsearchtextbox').type('Mobile')
         cy.get('.s-suggestion.s-suggestion-ellipsis-direction').each(function (el) {
@@ -39,5 +39,25 @@ describe('', function () {
                 return false
             }
         })
+    })
+    it.only('TC-04', function () {
+        cy.visit('https://jqueryui.com/checkboxradio/')
+        cy.get('.demo-frame').then(function (doc) {
+            let body = doc.contents().find('body')
+            cy.wrap(body).find('.ui-checkboxradio-icon-space').each(function (el, index) {
+                if (index == 2) {
+                    el.click()
+                }
+                if (index > 4) {
+                    el.click()
+                }
+
+            })
+
+            //doc[0].contentDocument.body()
+
+
+        })
+
     })
 })
